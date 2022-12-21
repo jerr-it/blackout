@@ -267,7 +267,7 @@ MonoBehaviour:
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.471
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 2.55
+  m_Intensity: 1
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
   m_ApplyToSortingLayers: 00000000
@@ -318,7 +318,7 @@ MonoBehaviour:
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
-  m_PointLightOuterRadius: 2.13
+  m_PointLightOuterRadius: 2
   m_ShapeLightParametricSides: 5
   m_ShapeLightParametricAngleOffset: 0
   m_ShapeLightParametricRadius: 1
@@ -605,7 +605,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 10
   m_Sprite: {fileID: 21300000, guid: ef814f0dc8fa61cf3a84359d9e2f4dad, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1018,7 +1018,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_Sprite: {fileID: 21300000, guid: b319326ddd320d6c28f20b23013d0193, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1334,9 +1334,6 @@ MonoBehaviour:
   rotationTarget: {fileID: 2465776214409991354}
   gun: {fileID: 5082871446810582311}
   bullet: {fileID: 5852575068190389958, guid: d7742191004aeb2f0a73085fdb90dca3, type: 3}
-  flashlight: {fileID: 6946437514769074703}
-  flashlightBatterySlider: {fileID: 5838100047758678542}
-  flashlightBatterySliderFill: {fileID: 6811450200791621368}
   deviceLostPanel: {fileID: 729632896286003850}
 --- !u!114 &6946437515429230194
 MonoBehaviour:
@@ -1419,22 +1416,6 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: f4b04d4e-79d5-4d47-8b54-34259bc148d7
     m_ActionName: Player/aim_target[/Mouse/position]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 6946437515429230196}
-        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
-        m_MethodName: OnFlashlightToggle
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: a563c473-3d22-40a0-ab9f-e747bacbd327
-    m_ActionName: Player/flashlight_toggle[/Keyboard/f]
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 6946437515429230196}
