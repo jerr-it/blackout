@@ -1,6 +1,8 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using TMPro;
+using UnityEngine.Pool;
 
 public class PlayerController : MonoBehaviour {
     [SerializeField] private float movementSpeed = 5f;
@@ -9,10 +11,17 @@ public class PlayerController : MonoBehaviour {
     private string controlScheme;
     private Rigidbody2D rb;
     private Vector2 movement;
+    private bool isShooting;
+    private Vector3 lookingAt;
 
     [Space(10)]
     [SerializeField] private GameObject gun;
     [SerializeField] private GameObject bullet;
+    
+    [Space(10)]
+    private ObjectPool<GameObject> _bulletPool;
+    [SerializeField] private int bulletPoolSizeDefault = 10;
+    [SerializeField] private int bulletPoolSizeMax = 500;
 
     #region UIComponents
 
@@ -23,10 +32,20 @@ public class PlayerController : MonoBehaviour {
     void Start() {
         controlScheme = GetComponent<PlayerInput>().currentControlScheme;
         rb = GetComponent<Rigidbody2D>();
+        _bulletPool = new ObjectPool<GameObject>(
+            () => Instantiate(bullet, transform), 
+            (obj) => obj.SetActive(true), 
+            (obj) => obj.SetActive(false),
+            (obj) => Destroy(obj),
+            false,
+            bulletPoolSizeDefault,
+            bulletPoolSizeMax
+        );
+
     }
 
     void Update() {
-
+        
     }
 
     void FixedUpdate() {
@@ -46,6 +65,7 @@ public class PlayerController : MonoBehaviour {
         }
 
         Vector3 dir = new Vector3(aimTarget.x, aimTarget.y, 0) - cam.WorldToScreenPoint(transform.position);
+        lookingAt = dir;
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
         rotationTarget.rotation = Quaternion.AngleAxis(angle - 90.0f, Vector3.forward);
     }
@@ -54,9 +74,38 @@ public class PlayerController : MonoBehaviour {
         movement = context.ReadValue<Vector2>();
     }
 
-    public void OnPlayerShoot(InputAction.CallbackContext context) {
+    public void OnPlayerShoot(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            isShooting = true;
+            StartCoroutine(ShootingInterval());
+        }
+        if (context.canceled) isShooting = false;
+    }
+
+    private IEnumerator ShootingInterval()
+    {
+        while (isShooting)
+        {
+            ShootBullet();
+            yield return new WaitForSeconds(0.1f);
+        }
+    }
+    
+    private void ShootBullet() {
+        var currentBullet = _bulletPool.Get();
+        currentBullet.transform.position = gun.transform.position;
+        currentBullet.transform.rotation = gun.transform.rotation;
 
     }
+
+    public void OnBulletCollision(GameObject hitBullet)
+    {
+        Debug.Log("pepega");
+        _bulletPool.Release(hitBullet);
+    }
+    
 
     public void OnDeviceLost() {
         deviceLostPanel.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = controlScheme + " lost connection";

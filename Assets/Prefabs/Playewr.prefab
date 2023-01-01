@@ -1292,7 +1292,7 @@ GameObject:
   - component: {fileID: 4294867518901387812}
   m_Layer: 0
   m_Name: Playewr
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1334,9 +1334,8 @@ MonoBehaviour:
   rotationTarget: {fileID: 2465776214409991354}
   gun: {fileID: 5082871446810582311}
   bullet: {fileID: 5852575068190389958, guid: d7742191004aeb2f0a73085fdb90dca3, type: 3}
-  flashlight: {fileID: 6946437514769074703}
-  flashlightBatterySlider: {fileID: 5838100047758678542}
-  flashlightBatterySliderFill: {fileID: 6811450200791621368}
+  bulletPoolSizeDefault: 10
+  bulletPoolSizeMax: 500
   deviceLostPanel: {fileID: 729632896286003850}
 --- !u!114 &6946437515429230194
 MonoBehaviour:
@@ -1419,22 +1418,6 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: f4b04d4e-79d5-4d47-8b54-34259bc148d7
     m_ActionName: Player/aim_target[/Mouse/position]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 6946437515429230196}
-        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
-        m_MethodName: OnFlashlightToggle
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: a563c473-3d22-40a0-ab9f-e747bacbd327
-    m_ActionName: Player/flashlight_toggle[/Keyboard/f]
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 6946437515429230196}
