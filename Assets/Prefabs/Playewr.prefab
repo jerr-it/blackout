@@ -1292,7 +1292,7 @@ GameObject:
   - component: {fileID: 4294867518901387812}
   m_Layer: 0
   m_Name: Playewr
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1334,6 +1334,8 @@ MonoBehaviour:
   rotationTarget: {fileID: 2465776214409991354}
   gun: {fileID: 5082871446810582311}
   bullet: {fileID: 5852575068190389958, guid: d7742191004aeb2f0a73085fdb90dca3, type: 3}
+  bulletPoolSizeDefault: 10
+  bulletPoolSizeMax: 500
   deviceLostPanel: {fileID: 729632896286003850}
 --- !u!114 &6946437515429230194
 MonoBehaviour:
