@@ -2,6 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine.Pool;
 
 public class PlayerController : MonoBehaviour {
@@ -14,42 +15,39 @@ public class PlayerController : MonoBehaviour {
     private bool isShooting;
     private Vector3 lookingAt;
 
-    [Space(10)]
-    [SerializeField] private GameObject gun;
+    [Space(10)] [SerializeField] public GameObject gun;
     [SerializeField] private GameObject bullet;
-    
-    [Space(10)]
-    private ObjectPool<GameObject> _bulletPool;
+
+    [Space(10)] private ObjectPool<GameObject> _bulletPool;
     [SerializeField] private int bulletPoolSizeDefault = 10;
     [SerializeField] private int bulletPoolSizeMax = 500;
+    [SerializeField] private float roundsPerMinute = 500f;
 
     #region UIComponents
 
-    [Space(10)]
-    [SerializeField] private GameObject deviceLostPanel;
+    [Space(10)] [SerializeField] private GameObject deviceLostPanel;
+
     #endregion
 
     void Start() {
         controlScheme = GetComponent<PlayerInput>().currentControlScheme;
         rb = GetComponent<Rigidbody2D>();
         _bulletPool = new ObjectPool<GameObject>(
-            () => Instantiate(bullet, transform), 
-            (obj) => obj.SetActive(true), 
+            () => Instantiate(bullet, transform),
+            (obj) => obj.SetActive(true),
             (obj) => obj.SetActive(false),
             (obj) => Destroy(obj),
             false,
             bulletPoolSizeDefault,
             bulletPoolSizeMax
         );
-
     }
 
-    void Update() {
-        
-    }
+    void Update() { }
 
     void FixedUpdate() {
-        rb.velocity = new Vector2(Time.deltaTime * movement.x * movementSpeed, Time.deltaTime * movement.y * movementSpeed);
+        rb.velocity = new Vector2(Time.deltaTime * movement.x * movementSpeed,
+            Time.deltaTime * movement.y * movementSpeed);
     }
 
     public void OnPlayerAim(InputAction.CallbackContext context) {
@@ -59,9 +57,11 @@ public class PlayerController : MonoBehaviour {
             if (aimTarget.x * aimTarget.x + aimTarget.y * aimTarget.y < 0.1f) {
                 return;
             }
+
             // Remap the controller's joystick values to the mouse's position
             // Controller joystick values are between -1 and 1 while mouse position is between 0 and width/height
-            aimTarget = MapVector(aimTarget, new Vector2(-1f, 1f), new Vector2(0f, Screen.width), new Vector2(-1f, 1f), new Vector2(0f, Screen.height));
+            aimTarget = MapVector(aimTarget, new Vector2(-1f, 1f), new Vector2(0f, Screen.width), new Vector2(-1f, 1f),
+                new Vector2(0f, Screen.height));
         }
 
         Vector3 dir = new Vector3(aimTarget.x, aimTarget.y, 0) - cam.WorldToScreenPoint(transform.position);
@@ -74,38 +74,30 @@ public class PlayerController : MonoBehaviour {
         movement = context.ReadValue<Vector2>();
     }
 
-    public void OnPlayerShoot(InputAction.CallbackContext context)
-    {
-        if (context.started)
-        {
+    public void OnPlayerShoot(InputAction.CallbackContext context) {
+        if (context.started) {
             isShooting = true;
             StartCoroutine(ShootingInterval());
         }
+
         if (context.canceled) isShooting = false;
     }
 
-    private IEnumerator ShootingInterval()
-    {
-        while (isShooting)
-        {
+    private IEnumerator ShootingInterval() {
+        while (isShooting) {
             ShootBullet();
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(1f / (roundsPerMinute / 60f) );
         }
     }
-    
-    private void ShootBullet() {
-        var currentBullet = _bulletPool.Get();
-        currentBullet.transform.position = gun.transform.position;
-        currentBullet.transform.rotation = gun.transform.rotation;
 
+    private void ShootBullet() {
+        _bulletPool.Get();
     }
 
-    public void OnBulletCollision(GameObject hitBullet)
-    {
-        Debug.Log("pepega");
+    public void OnBulletCollision(GameObject hitBullet) {
         _bulletPool.Release(hitBullet);
     }
-    
+
 
     public void OnDeviceLost() {
         deviceLostPanel.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = controlScheme + " lost connection";

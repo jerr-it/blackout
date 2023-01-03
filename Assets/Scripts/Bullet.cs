@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -13,17 +14,22 @@ public class Bullet : MonoBehaviour {
 
     private Rigidbody2D rb;
 
-    private void Start() {
-        rb = GetComponent<Rigidbody2D>();
-        player = transform.parent.GameObject().GetComponent<PlayerController>();
-        rb.velocity = transform.up * speed;
-    }
-
     private void OnCollisionEnter2D(Collision2D collision) {
         if (collision.collider.GameObject() == player.GameObject()) return; 
         Vector3 newdirection = Vector3.Reflect(transform.up, collision.GetContact(0).normal);
 
         Instantiate(explosion, transform.position, Quaternion.LookRotation(newdirection) * Quaternion.Euler(90, 0, 0));
         player.OnBulletCollision(this.GameObject());
+    }
+
+    private void OnEnable() {
+        transform.position = player.gun.transform.position;
+        transform.rotation = player.gun.transform.rotation;
+        rb.velocity = transform.up * speed;
+    }
+
+    private void Awake() {
+        rb = GetComponent<Rigidbody2D>();
+        player = transform.parent.GameObject().GetComponent<PlayerController>();
     }
 }
