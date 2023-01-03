@@ -231,7 +231,11 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape: []
+      physicsShape:
+      - - {x: -16, y: -17}
+        - {x: -16, y: 16}
+        - {x: 17, y: 16}
+        - {x: 17, y: -17}
       tessellationDetail: 0
       bones: []
       spriteID: 2950920d6df03d72db116b04d9240f61
@@ -537,7 +541,11 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape: []
+      physicsShape:
+      - - {x: -16, y: -17}
+        - {x: -16, y: 16}
+        - {x: 16, y: 15}
+        - {x: 16, y: -17}
       tessellationDetail: 0
       bones: []
       spriteID: 59cb0a8e16f8684bb87e08a0d5712cbb
@@ -768,7 +776,11 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape: []
+      physicsShape:
+      - - {x: -32, y: -32}
+        - {x: 32, y: 32}
+        - {x: 32, y: 10}
+        - {x: -8, y: -32}
       tessellationDetail: 0
       bones: []
       spriteID: 9f811e6c4abfabd0f8ff4e07293b7b0c
@@ -831,7 +843,11 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape: []
+      physicsShape:
+      - - {x: -10, y: -26}
+        - {x: -29, y: 0}
+        - {x: 12, y: 30}
+        - {x: 30, y: 9}
       tessellationDetail: 0
       bones: []
       spriteID: 89983b1fae40479ceb7d1554e51945d5
@@ -1973,7 +1989,11 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape: []
+      physicsShape:
+      - - {x: -21, y: -22}
+        - {x: -22, y: 21}
+        - {x: 21, y: 21}
+        - {x: 21, y: -21}
       tessellationDetail: 0
       bones: []
       spriteID: 153e7ab516910f371a27ab741215e3fa
@@ -2267,7 +2287,11 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape: []
+      physicsShape:
+      - - {x: -20, y: -20}
+        - {x: -20, y: 20}
+        - {x: 21, y: 19}
+        - {x: 22, y: -22}
       tessellationDetail: 0
       bones: []
       spriteID: 4e78bfad4c4e2c57dbf7a023236cf166
@@ -3075,8 +3099,8 @@ TextureImporter:
       tilesheet_87: -2011299032
       tilesheet_17: 1651596530
       tilesheet_28: -730570218
-      tilesheet_34: -1744587694
       tilesheet_96: 1959214221
+      tilesheet_34: -1744587694
       tilesheet_13: 1905365526
       tilesheet_68: 931208653
       tilesheet_5: 570065760

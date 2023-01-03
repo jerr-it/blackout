@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a6adc856c17aba2db2af5038604d8e3, type: 3}
+  m_Name: clubs
+  m_EditorClassIdentifier: 
+  preview: {fileID: 21300000, guid: a45e5b516273711d684f45fe0e5b3c10, type: 3}
+  mapName: Clubs
+  mapScene: arena_clubs
+  mapType: 0
