@@ -1358,7 +1358,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 50.995, y: -21.375}
+  m_AnchoredPosition: {x: 50.994995, y: -21.375}
   m_SizeDelta: {x: 91.99, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &732851890
@@ -2161,6 +2161,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maps:
   - {fileID: 11400000, guid: b7976ab88717df9838cba5c045655fd3, type: 2}
+  - {fileID: 11400000, guid: e6602d9c1b9eda1c1ae7247534301a28, type: 2}
   mapSelection: {fileID: 693982765}
   mainMenu: {fileID: 1044907532}
   mapScrollViewContent: {fileID: 298598879}

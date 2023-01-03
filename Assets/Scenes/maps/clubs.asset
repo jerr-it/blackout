@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a6adc856c17aba2db2af5038604d8e3, type: 3}
   m_Name: clubs
   m_EditorClassIdentifier: 
-  preview: {fileID: 0}
-  mapName: 
-  mapScene: 
+  preview: {fileID: 21300000, guid: a45e5b516273711d684f45fe0e5b3c10, type: 3}
+  mapName: Clubs
+  mapScene: arena_clubs
   mapType: 0
