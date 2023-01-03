@@ -6,6 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/main_menu.unity
+    guid: 781e4a9eb73a60b4c826e95c3ac06538
+  - enabled: 1
+    path: Assets/Scenes/maps/arena1.unity
+    guid: 169579962aaded5308d2188a0f3998a8
+  - enabled: 1
     path: Assets/Scenes/BestMapEver.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
   m_configObjects: {}

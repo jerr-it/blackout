@@ -108,8 +108,11 @@ public class PlayerController : MonoBehaviour {
         deviceLostPanel.SetActive(false);
     }
 
-    private Vector2 MapVector(Vector2 input, Vector2 old_x_range, Vector2 new_x_range, Vector2 old_y_range,
-        Vector2 new_y_range) {
+    public void SetPlayerSkin(Sprite skin) {
+        transform.GetChild(1).GetComponent<SpriteRenderer>().sprite = skin;
+    }
+
+    private Vector2 MapVector(Vector2 input, Vector2 old_x_range, Vector2 new_x_range, Vector2 old_y_range, Vector2 new_y_range) {
         float x = Map(input.x, old_x_range.x, old_x_range.y, new_x_range.x, new_x_range.y);
         float y = Map(input.y, old_y_range.x, old_y_range.y, new_y_range.x, new_y_range.y);
         return new Vector2(x, y);
