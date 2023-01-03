@@ -23,7 +23,9 @@ public class Bullet : MonoBehaviour {
     }
 
     private void OnEnable() {
-        rb.velocity = transform.forward * speed;
+        transform.position = player.gun.transform.position;
+        transform.rotation = player.gun.transform.rotation;
+        rb.velocity = transform.up * speed;
     }
 
     private void Awake() {
