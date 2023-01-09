@@ -23,6 +23,13 @@ public class PlayerController : MonoBehaviour {
     [SerializeField] private int bulletPoolSizeMax = 500;
     [SerializeField] private float roundsPerMinute = 500f;
 
+    private int killCount = 0;
+    private bool isSpectator = false;
+    private bool invincible = false;
+    [SerializeField] private CapsuleCollider2D collider2d;
+    [SerializeField] private SpriteRenderer characterSprite;
+    [SerializeField] private SpriteRenderer gunSprite;
+
     #region UIComponents
 
     [Space(10)] [SerializeField] private GameObject deviceLostPanel;
@@ -75,6 +82,8 @@ public class PlayerController : MonoBehaviour {
     }
 
     public void OnPlayerShoot(InputAction.CallbackContext context) {
+        if (isSpectator) return;
+        
         if (context.started) {
             isShooting = true;
             StartCoroutine(ShootingInterval());
@@ -110,6 +119,28 @@ public class PlayerController : MonoBehaviour {
 
     public void SetPlayerSkin(Sprite skin) {
         transform.GetChild(1).GetComponent<SpriteRenderer>().sprite = skin;
+    }
+
+    public void EnableSpectator() {
+        isSpectator = true;
+        collider2d.enabled = false;
+        characterSprite.enabled = false;
+        gunSprite.enabled = false;
+    }
+
+    public void DisableSpectator() {
+        isSpectator = false;
+        collider2d.enabled = true;
+        characterSprite.enabled = true;
+        gunSprite.enabled = true;
+    }
+    
+    public int GetKillCount() {
+        return killCount;
+    }
+
+    public void AddKill() {
+        killCount += 1;
     }
 
     private Vector2 MapVector(Vector2 input, Vector2 old_x_range, Vector2 new_x_range, Vector2 old_y_range, Vector2 new_y_range) {
