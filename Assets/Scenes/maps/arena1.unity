@@ -133,7 +133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 549727520}
   - component: {fileID: 549727519}
-  - component: {fileID: 549727518}
+  - component: {fileID: 549727521}
   m_Layer: 0
   m_Name: MatchManager
   m_TagString: Untagged
@@ -141,28 +141,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &549727518
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 549727517}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 72995a02120083116916c15551051e96, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spawnPoints:
-  - {fileID: 1391977207}
-  - {fileID: 2067659244}
-  - {fileID: 1138005074}
-  - {fileID: 1914702898}
-  playerSkins:
-  - {fileID: 21300000, guid: ef814f0dc8fa61cf3a84359d9e2f4dad, type: 3}
-  - {fileID: 21300000, guid: 5a2379aa4b284b3e1bad3e0ae373dddd, type: 3}
-  - {fileID: 21300000, guid: a343ccec57eaa2983bdd4a73e7874f30, type: 3}
-  - {fileID: 21300000, guid: ed1f63cab2bb3b07b8fbde160cc0a71c, type: 3}
 --- !u!114 &549727519
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -182,8 +160,8 @@ MonoBehaviour:
   m_PlayerJoinedEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 549727518}
-        m_TargetAssemblyTypeName: MatchManager, Assembly-CSharp
+      - m_Target: {fileID: 549727521}
+        m_TargetAssemblyTypeName: ArenaMatchManager, Assembly-CSharp
         m_MethodName: OnPlayerJoined
         m_Mode: 0
         m_Arguments:
@@ -234,6 +212,31 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &549727521
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 549727517}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b54f8ace7873db973878c0699ce62b8b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnPoints:
+  - {fileID: 1391977207}
+  - {fileID: 2067659244}
+  - {fileID: 1138005074}
+  - {fileID: 1914702898}
+  playerSkins:
+  - {fileID: 21300000, guid: ef814f0dc8fa61cf3a84359d9e2f4dad, type: 3}
+  - {fileID: 21300000, guid: 5a2379aa4b284b3e1bad3e0ae373dddd, type: 3}
+  - {fileID: 21300000, guid: a343ccec57eaa2983bdd4a73e7874f30, type: 3}
+  - {fileID: 21300000, guid: ed1f63cab2bb3b07b8fbde160cc0a71c, type: 3}
+  respawnTimer: 3
+  targetKills: 10
+  invulnTimer: 5
 --- !u!1 &1049765252
 GameObject:
   m_ObjectHideFlags: 0

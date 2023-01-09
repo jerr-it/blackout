@@ -1336,6 +1336,10 @@ MonoBehaviour:
   bullet: {fileID: 5852575068190389958, guid: d7742191004aeb2f0a73085fdb90dca3, type: 3}
   bulletPoolSizeDefault: 10
   bulletPoolSizeMax: 500
+  roundsPerMinute: 500
+  collider2d: {fileID: 4294867518901387812}
+  characterSprite: {fileID: 811494689283643553}
+  gunSprite: {fileID: 1557261500254490980}
   deviceLostPanel: {fileID: 729632896286003850}
 --- !u!114 &6946437515429230194
 MonoBehaviour:
